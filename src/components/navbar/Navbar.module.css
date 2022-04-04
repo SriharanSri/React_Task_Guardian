@@ -1,0 +1,10 @@
+.appName{
+    margin: 10px 20px;
+}
+
+
+.navigation{
+    display: flex;
+    margin-top: 10px;
+    padding: 0 .2rem;
+}
