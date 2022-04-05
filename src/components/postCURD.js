@@ -23,10 +23,10 @@ function PostCURD({ post }) {
   };
   return (
     <div key={post.id} className="card">
-      <div className="newpost">{post.title}</div>
+      <u className="newpost">{post.title}</u>
       <div className="tittle">
-        <h5 className="card-title">{post.title}</h5>
-        <p className="card-text">{post.body}</p>
+        <h5 className="card-title">{ 'Title :'+ post.title}</h5>
+        <p className="card-text">{'Post :' +post.body}</p>
 
         <input value={textinput}  onChange={(e)=>handleText(e)} hidden={visibile} />
         <button onClick={() => handleSubmit()} className="btn btn-primary" hidden={visibile} >Update</button>

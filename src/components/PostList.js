@@ -7,7 +7,7 @@ import {
 } from "../sagas/Thunk/SeriviceThunk";
 import PostCURD from "./postCURD";
 import { Modal, Button } from "antd";
-
+import 'antd/dist/antd.css';
 function PostList() {
   useEffect(() => {
     dispatch(fetchUserData());
