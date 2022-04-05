@@ -2,7 +2,7 @@ import axios from "axios";
 import { FETCH_USER_DETAILS_SUCCESS ,FETCH_USER_POST_SUCCESS} from "../../Actions/ActionConstant";
 import { ToastContainer, toast } from 'react-toastify';
 
-const postAPI = "users/4704/posts";
+const postAPI = "users/4253/posts";
 const updatePost = 'posts/'
 const deletePost = 'posts/'
 const user ='users/'
