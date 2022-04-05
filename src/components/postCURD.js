@@ -24,7 +24,7 @@ function PostCURD({ post }) {
   return (
     <div key={post.id} className="card">
       <div className="newpost">{post.title}</div>
-      <div className="card-body">
+      <div className="tittle">
         <h5 className="card-title">{post.title}</h5>
         <p className="card-text">{post.body}</p>
 

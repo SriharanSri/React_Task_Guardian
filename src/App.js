@@ -5,7 +5,7 @@ import PostList from "./components/PostList";
 import Discard from "./components/Discard";
 import MainFile from "./components/MainFile";
 import Navbar from "./components/navbar/Navbar";
-// import 'antd/dist/antd.css';
+import 'antd/dist/antd.css';
 import { ToastContainer } from 'react-toastify';
 
 
