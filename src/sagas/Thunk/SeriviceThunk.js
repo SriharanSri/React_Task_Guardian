@@ -83,7 +83,7 @@ export const PostUpdate = (post) => {
   export const PostDelete = (id) => {
     return async (dispatch) => {
       try {
-        const response = await API.delete(deletePost+id);
+       await API.delete(deletePost+id);
         dispatch(fetchUserData())
         toast("Post Deleted!")
       } catch (error) {
@@ -94,7 +94,7 @@ export const PostUpdate = (post) => {
   export const TodoDelete = (id) => {
     return async (dispatch) => {
       try {
-        const response = await API.delete(updateTodo+id);
+        await API.delete(updateTodo+id);
         dispatch(fetchUserTodo())
         toast("Todo Deleted!")
       } catch (error) {
@@ -105,7 +105,7 @@ export const PostUpdate = (post) => {
   export const AddPost = (data) => {
     return async (dispatch) => {
       try {
-        const response = await API.post(postAPI,data);
+       await API.post(postAPI,data);
         dispatch(fetchUserData())
         toast("Post Added!")
       } catch (error) {
@@ -116,7 +116,7 @@ export const PostUpdate = (post) => {
   export const AddTodo = (data) => {
     return async (dispatch) => {
       try {
-        const response = await API.post(todoAPI,data);
+        await API.post(todoAPI,data);
         dispatch(fetchUserTodo())
         toast("New Todo Added!")
       } catch (error) {

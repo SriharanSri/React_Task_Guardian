@@ -7,8 +7,8 @@ import {
   fetchUserTodo,
 } from "../sagas/Thunk/SeriviceThunk";
 import PostCURD from "./postCURD";
-import { Tabs } from "antd";
-import { Modal, Button } from "antd";
+import { Tabs, } from "antd";
+import { Modal, Button,Radio } from "antd";
 import "antd/dist/antd.css";
 import TodoCURD from "./TodoCURD";
 
@@ -19,6 +19,7 @@ function PostList() {
     dispatch(fetchUserTodo());
   }, []);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [value, setValue] = React.useState(1);
   const [ModalVisible, setModalVisible] = useState(false);
 
   const dispatch = useDispatch();
