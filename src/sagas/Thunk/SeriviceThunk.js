@@ -3,7 +3,9 @@ import { FETCH_USER_DETAILS_SUCCESS ,FETCH_USER_POST_SUCCESS, FETCH_USER_TODO_SU
 import { ToastContainer, toast } from 'react-toastify';
 
 const postAPI = "users/3387/posts";
+const todoAPI = "users/3387/todos";
 const updatePost = 'posts/'
+const updateTodo = 'todos/'
 const deletePost = 'posts/'
 const user ='users/'
 const getTodo = 'users/3387/todos'
@@ -89,12 +91,45 @@ export const PostUpdate = (post) => {
       }
     };
   };
+  export const TodoDelete = (id) => {
+    return async (dispatch) => {
+      try {
+        const response = await API.delete(updateTodo+id);
+        dispatch(fetchUserTodo())
+        toast("Todo Deleted!")
+      } catch (error) {
+        throw error;
+      }
+    };
+  };
   export const AddPost = (data) => {
     return async (dispatch) => {
       try {
         const response = await API.post(postAPI,data);
         dispatch(fetchUserData())
         toast("Post Added!")
+      } catch (error) {
+        throw error;
+      }
+    };
+  };
+  export const AddTodo = (data) => {
+    return async (dispatch) => {
+      try {
+        const response = await API.post(todoAPI,data);
+        dispatch(fetchUserTodo())
+        toast("New Todo Added!")
+      } catch (error) {
+        throw error;
+      }
+    };
+  };
+  export const TodoUpdate = (todo) => {
+    return async (dispatch) => {
+      try {
+        const response = await API.patch(updateTodo+todo.todo.id,todo);
+        dispatch(fetchUserTodo())
+        toast("Todo Updated")
       } catch (error) {
         throw error;
       }

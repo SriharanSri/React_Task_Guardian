@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddPost,
+  AddTodo,
   fetchUserData,
   fetchUserTodo,
 } from "../sagas/Thunk/SeriviceThunk";
@@ -9,7 +10,7 @@ import PostCURD from "./postCURD";
 import { Tabs } from "antd";
 import { Modal, Button } from "antd";
 import "antd/dist/antd.css";
-import TodoCURD from "./todoCURD";
+import TodoCURD from "./TodoCURD";
 
 const { TabPane } = Tabs;
 function PostList() {
@@ -18,6 +19,8 @@ function PostList() {
     dispatch(fetchUserTodo());
   }, []);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [ModalVisible, setModalVisible] = useState(false);
+
   const dispatch = useDispatch();
   const [textinput, settextinput] = React.useState();
   const postData = useSelector((state) => state.userdata).userdata;
@@ -30,16 +33,30 @@ function PostList() {
     dispatch(AddPost(data));
     setIsModalVisible(false);
   };
+  const createTodo = (e) => {
+    e.preventDefault();
+    const data = { title: todoRef.current.value, status: status };
+    dispatch(AddTodo(data));
+    setIsModalVisible(false);
+  };
   const titleRef = React.useRef(null);
   const bodyRef = React.useRef(null);
+  const todoRef = React.useRef(null);
+  const status = "pending";
   const showModal = () => {
     setIsModalVisible(true);
+  };
+  const showTodoModal = () => {
+    setModalVisible(true);
   };
 
   const handleOk = () => {};
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+  const handleTodoCancel = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -71,16 +88,29 @@ function PostList() {
         </TabPane>
         <TabPane tab="Todo" key="2">
           <>
-           
-          <p className="postpage">Todo Page</p>
-            { todoData.map((todo) => (
-            <TodoCURD todo={todo} key={todo.id} />
-          ))}
+            <p className="postpage">Todo Page</p>
+
+            <Button type="primary" onClick={showTodoModal}>
+              Create Todo
+            </Button>
+            <form onSubmit={(e) => createTodo(e)}>
+              <Modal
+                okType="submit"
+                title="Create New Todo"
+                visible={ModalVisible}
+                onOk={(e) => createTodo(e)}
+                onCancel={handleTodoCancel}
+              >
+                <div className="feildview">
+                  <input placeholder="Title" className="input" ref={todoRef} />
+                </div>
+              </Modal>
+            </form>
+            {todoData.map((todo) => (
+              <TodoCURD todo={todo} key={todo.id} />
+            ))}
           </>
         </TabPane>
-        {/* <TabPane tab="Tab 3" key="3">
-          Content of Tab Pane 3
-        </TabPane> */}
       </Tabs>
     </div>
   );
