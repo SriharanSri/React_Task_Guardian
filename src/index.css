@@ -115,7 +115,23 @@ body {
   margin: 10px;
   color: teal;
 }
+.todoheader{
+  flex-direction: row;
+  display: flex;
+  width: 350px;
+  background-color: lightgray;
+  border-radius: 25px;
+  align-items: center;
+  height: 40px;
+  margin-top: 15px;
+}
+.todotitle{
+  margin-left: 30px;
 
+}
+.todotitle1{
+  margin-left: 30px;
+}
 .tittle{
   font-size: larger;
 }

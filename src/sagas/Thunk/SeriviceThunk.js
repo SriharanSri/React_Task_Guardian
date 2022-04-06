@@ -1,11 +1,12 @@
 import axios from "axios";
-import { FETCH_USER_DETAILS_SUCCESS ,FETCH_USER_POST_SUCCESS} from "../../Actions/ActionConstant";
+import { FETCH_USER_DETAILS_SUCCESS ,FETCH_USER_POST_SUCCESS, FETCH_USER_TODO_SUCCESS} from "../../Actions/ActionConstant";
 import { ToastContainer, toast } from 'react-toastify';
 
-const postAPI = "users/4253/posts";
+const postAPI = "users/3387/posts";
 const updatePost = 'posts/'
 const deletePost = 'posts/'
 const user ='users/'
+const getTodo = 'users/3387/todos'
 const API = axios.create({
     baseURL: 'https://gorest.co.in/public/v2/',
     timeout: 10000,
@@ -24,13 +25,31 @@ export const fetchPost = (data) => {
       data,
     };
   };
+  export const fetchTodo = (data) => {
+    return {
+      type: FETCH_USER_TODO_SUCCESS,
+      data,
+    };
+  };
+
+  export const fetchUserTodo = () => {
+    return async (dispatch) => {
+      try {
+        const response = await API.get(getTodo);
+        dispatch(fetchTodo(response.data));
+        // console.log("res", response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
+  };
 
 export const fetchUserData = () => {
   return async (dispatch) => {
     try {
       const response = await API.get(postAPI);
       dispatch(fetchData(response.data));
-      console.log("res", response.data);
+      // console.log("res", response.data);
     } catch (error) {
       throw error;
     }

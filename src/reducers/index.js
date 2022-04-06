@@ -5,5 +5,6 @@ export default combineReducers({
 
   userdata: userReducer,
   post : userReducer,
+  usertodo : userReducer
   
 })
