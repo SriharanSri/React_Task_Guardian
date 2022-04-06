@@ -119,7 +119,7 @@ body {
   flex-direction: row;
   display: flex;
   width: 350px;
-  background-color: lightgray;
+  /* background-color:#fff; */
   border-radius: 25px;
   align-items: center;
   height: 40px;
@@ -127,10 +127,28 @@ body {
 }
 .todotitle{
   margin-left: 30px;
-
+  font-weight: bold;
+}
+.todoheaderView{
+  border-width: 3px;
+  /* height: 200px; */
+  /* width: 60px; */
+  flex-direction: column;
+  border-color: #000;
+}
+.qwerty{
+  width: 400px;
+  height: auto;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  border-width: 3px;
+  /* border-color: turquoise; */
+  background-color: powderblue;
 }
 .todotitle1{
   margin-left: 30px;
+  font-weight: bold;
 }
 .tittle{
   font-size: larger;

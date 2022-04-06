@@ -49,9 +49,7 @@ function PostCURD({ post }) {
           cancelText="No"
           onConfirm={() => handleDelete()}
         >
-        <button  className="btn btn-danger">
-          Delete
-        </button>
+          <button className="btn btn-danger">Delete</button>
         </Popconfirm>
       </div>
     </div>

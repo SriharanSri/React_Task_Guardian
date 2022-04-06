@@ -89,6 +89,7 @@ function PostList() {
         </TabPane>
         <TabPane tab="Todo" key="2">
           <>
+          <div className="todoheaderView">
             <p className="postpage">Todo Page</p>
 
             <Button type="primary" onClick={showTodoModal}>
@@ -110,6 +111,7 @@ function PostList() {
             {todoData.map((todo) => (
               <TodoCURD todo={todo} key={todo.id} />
             ))}
+            </div>
           </>
         </TabPane>
       </Tabs>

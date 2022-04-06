@@ -42,10 +42,10 @@ function TodoCURD(todo) {
     setModalVisible(false);
   };
   return (
-    <>
+    <div className="qwerty">
       <div key={todo.todo.id} className="todoheader">
-        <p className="todotitle">{"Title :" + todo.todo.title}</p>
-        <p className="todotitle1">{"Status :" + todo.todo.status}</p>
+        <p className="todotitle">{"Title :   " + todo.todo.title}</p>
+        <p className="todotitle1">{"Status :   " + todo.todo.status}</p>
       </div>
 
       <div style={{ flexDirection: "row", display: "flex", padding: 10 }}>
@@ -54,7 +54,7 @@ function TodoCURD(todo) {
           onChange={(e) => handleText(e)}
           hidden={visibile}
         />
-        <button onClick={() => handleEdit()} className="btn btn-primary">
+        <button onClick={() => handleEdit()} style={{marginRight:10}} className="btn btn-primary">
           Edit
         </button>
         <Popconfirm
@@ -90,7 +90,8 @@ function TodoCURD(todo) {
           </Modal>
         </form>
       </div>
-    </>
+      </div>
+    
   );
 }
 
