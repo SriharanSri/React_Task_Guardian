@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { TodoDelete, TodoUpdate } from "../sagas/Thunk/SeriviceThunk";
-import { Radio, Modal } from "antd";
+import { Radio, Modal, Popconfirm } from "antd";
 
 function TodoCURD(todo) {
   const [visibile, setVisibile] = React.useState(true);
-  const [value, setValue] = React.useState(1);
+  const [value, setValue] = React.useState(todo.todo.status);
   const [textinput, settextinput] = React.useState(todo.todo.title);
   const [ModalVisible, setModalVisible] = React.useState(false);
 
@@ -36,7 +36,7 @@ function TodoCURD(todo) {
   };
   const EditTodo = (e) => {
     e.preventDefault();
-    dispatch(TodoUpdate({ ...todo, title: textinput,status : value }));
+    dispatch(TodoUpdate({ ...todo, title: textinput, status: value }));
     // const data = { title: todoRef.current.value, status: status };
     // dispatch(AddTodo(data));
     setModalVisible(false);
@@ -48,25 +48,25 @@ function TodoCURD(todo) {
         <p className="todotitle1">{"Status :" + todo.todo.status}</p>
       </div>
 
-      <div style={{ flexDirection: "row", display: "flex" }}>
+      <div style={{ flexDirection: "row", display: "flex", padding: 10 }}>
         <input
           value={textinput}
           onChange={(e) => handleText(e)}
           hidden={visibile}
         />
-        <button
-          onClick={() => handleSubmit()}
-          className="btn btn-primary"
-          hidden={visibile}
-        >
-          Update
-        </button>
         <button onClick={() => handleEdit()} className="btn btn-primary">
           Edit
         </button>
-        <button onClick={() => handleDelete()} className="btn btn-danger">
-          Delete
-        </button>
+        <Popconfirm
+          title="Are you sure delete this task?"
+          okText="Yes"
+          cancelText="No"
+          onConfirm={() => handleDelete()}
+        >
+          <button  className="btn btn-danger">
+            Delete
+          </button>
+        </Popconfirm>
         <form onSubmit={(e) => EditTodo(e)}>
           <Modal
             okType="submit"
@@ -74,7 +74,7 @@ function TodoCURD(todo) {
             visible={ModalVisible}
             onOk={(e) => EditTodo(e)}
             onCancel={handleTodoCancel}
-            okText='Update'
+            okText="Update"
           >
             <div className="feildview">
               <input
@@ -83,8 +83,8 @@ function TodoCURD(todo) {
                 // hidden={visibile}
               />
               <Radio.Group onChange={onChange} value={value}>
-                <Radio value={'pending'}>Pending</Radio>
-                <Radio value={'completed'}>Completed</Radio>
+                <Radio value={"pending"}>Pending</Radio>
+                <Radio value={"completed"}>Completed</Radio>
               </Radio.Group>
             </div>
           </Modal>

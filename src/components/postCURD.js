@@ -1,6 +1,8 @@
+import { Popconfirm } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { PostUpdate, PostDelete } from "../sagas/Thunk/SeriviceThunk";
+
 function PostCURD({ post }) {
   const [visibile, setVisibile] = React.useState(true);
   const [textinput, settextinput] = React.useState(post.title);
@@ -40,9 +42,17 @@ function PostCURD({ post }) {
         <button onClick={() => handleEdit()} className="btn btn-primary">
           Edit
         </button>
-        <button onClick={() => handleDelete()} className="btn btn-danger">
+
+        <Popconfirm
+          title="Are you sure delete this Post?"
+          okText="Yes"
+          cancelText="No"
+          onConfirm={() => handleDelete()}
+        >
+        <button  className="btn btn-danger">
           Delete
         </button>
+        </Popconfirm>
       </div>
     </div>
   );
