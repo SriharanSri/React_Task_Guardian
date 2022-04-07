@@ -1,3 +1,10 @@
+import {
+  DeleteOutlined,
+  DeleteTwoTone,
+  EditFilled,
+  EditOutlined,
+  EditTwoTone,
+} from "@ant-design/icons";
 import { Modal, Popconfirm } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -34,7 +41,25 @@ function PostCURD({ post }) {
 
   return (
     <div key={post.id} className="card">
-      <u className="newpost">{post.title}</u>
+      <div className="subhead">
+        <u className="newpost">{post.title}</u>
+        <div>
+          <Popconfirm
+            title="Are you sure delete this Post?"
+            okText="Yes"
+            cancelText="No"
+            onConfirm={() => handleDelete()}
+          >
+            <DeleteTwoTone style={{ fontSize: 20 }} />
+          </Popconfirm>
+
+          <EditTwoTone
+            style={{ fontSize: 22, marginLeft: 8 }}
+            onClick={() => handleEdit()}
+          />
+        </div>
+      </div>
+
       <div className="tittle">
         <h5 className="card-title">{"Title :    " + post.title}</h5>
         <p className="card-text">{"Post :   " + post.body}</p>
@@ -44,18 +69,6 @@ function PostCURD({ post }) {
           onChange={(e) => handleText(e)}
           hidden={visibile}
         />
-        <button onClick={() => handleEdit()} className="btn btn-primary">
-          Edit
-        </button>
-
-        <Popconfirm
-          title="Are you sure delete this Post?"
-          okText="Yes"
-          cancelText="No"
-          onConfirm={() => handleDelete()}
-        >
-          <button className="btn btn-danger">Delete</button>
-        </Popconfirm>
       </div>
       <form onSubmit={(e) => EditPost(e)}>
         <Modal

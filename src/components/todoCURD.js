@@ -2,6 +2,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { TodoDelete, TodoUpdate } from "../sagas/Thunk/SeriviceThunk";
 import { Radio, Modal, Popconfirm } from "antd";
+import {
+  DeleteOutlined,
+  DeleteTwoTone,
+  EditFilled,
+  EditOutlined,
+  EditTwoTone,
+} from "@ant-design/icons";
 
 function TodoCURD(todo) {
   const [visibile, setVisibile] = React.useState(true);
@@ -41,6 +48,24 @@ function TodoCURD(todo) {
   };
   return (
     <div className="qwerty">
+      <div className="subhead">
+        <u className="newpost"></u>
+        <div>
+          <Popconfirm
+            title="Are you sure delete this Task?"
+            okText="Yes"
+            cancelText="No"
+            onConfirm={() => handleDelete()}
+          >
+            <DeleteOutlined style={{ fontSize: 20 }} />
+          </Popconfirm>
+
+          <EditOutlined
+            style={{ fontSize: 22, marginLeft: 8 }}
+            onClick={() => handleEdit()}
+          />
+        </div>
+      </div>
       <div key={todo.todo.id} className="todoheader">
         <p className="todotitle">{"Title :   " + todo.todo.title}</p>
         <p className="todotitle1">{"Status :   " + todo.todo.status}</p>
@@ -52,19 +77,6 @@ function TodoCURD(todo) {
           onChange={(e) => handleText(e)}
           hidden={visibile}
         />
-        <button onClick={() => handleEdit()} style={{marginRight:10}} className="btn btn-primary">
-          Edit
-        </button>
-        <Popconfirm
-          title="Are you sure delete this task?"
-          okText="Yes"
-          cancelText="No"
-          onConfirm={() => handleDelete()}
-        >
-          <button  className="btn btn-danger">
-            Delete
-          </button>
-        </Popconfirm>
         <form onSubmit={(e) => EditTodo(e)}>
           <Modal
             okType="submit"

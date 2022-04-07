@@ -136,6 +136,12 @@ body {
   flex-direction: column;
   border-color: #000;
 }
+.subhead{
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
 .qwerty{
   width: 400px;
   height: auto;

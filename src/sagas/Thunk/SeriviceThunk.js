@@ -127,9 +127,18 @@ export const PostUpdate = (post) => {
   export const TodoUpdate = (todo) => {
     return async (dispatch) => {
       try {
-        const response = await API.patch(updateTodo+todo.todo.id,todo);
+        await API.patch(updateTodo+todo.todo.id,todo);
         dispatch(fetchUserTodo())
-        toast("Todo Updated")
+        toast('Updated !!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          
+          });
       } catch (error) {
         throw error;
       }
