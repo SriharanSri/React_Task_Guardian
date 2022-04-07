@@ -17,9 +17,9 @@ export default function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Discard} />
+        <Route exact path="/" component={PostList} />
+          <Route exact path="/Discard" component={Discard} />
           <Route exact path="/MainFile" component={MainFile} />
-          <Route exact path="/PostList" component={PostList} />
         </Switch>
       </BrowserRouter>
     </div>
