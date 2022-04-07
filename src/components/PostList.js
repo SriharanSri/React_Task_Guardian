@@ -38,7 +38,7 @@ function PostList() {
     e.preventDefault();
     const data = { title: todoRef.current.value, status: status };
     dispatch(AddTodo(data));
-    setIsModalVisible(false);
+    setModalVisible(false);
   };
   const titleRef = React.useRef(null);
   const bodyRef = React.useRef(null);
