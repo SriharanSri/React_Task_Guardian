@@ -37,8 +37,6 @@ function TodoCURD(todo) {
   const EditTodo = (e) => {
     e.preventDefault();
     dispatch(TodoUpdate({ ...todo, title: textinput, status: value }));
-    // const data = { title: todoRef.current.value, status: status };
-    // dispatch(AddTodo(data));
     setModalVisible(false);
   };
   return (

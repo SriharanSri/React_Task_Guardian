@@ -1,4 +1,3 @@
-// import ReactDOM from "react-dom";
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import PostList from "./components/PostList";
@@ -25,4 +24,3 @@ export default function App() {
     </div>
   );
 }
-// ReactDOM.render(<App />, document.getElementById("root"));

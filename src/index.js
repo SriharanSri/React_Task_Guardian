@@ -9,10 +9,8 @@ import thunk from 'redux-thunk';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
-  // <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>,
-  // </React.StrictMode>,
   document.getElementById("root")
 );

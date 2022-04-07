@@ -15,7 +15,6 @@ const Navbar = () => {
                 <h3 className='headertext' style={{margin: "0 10px"}}  onClick={()=>navigator.push("/MainFile")}>Search Posts</h3>
                 <h3 className='headertext' style={{margin: "0 10px"}}  onClick={()=>navigator.push("/Discard")}>Dashboard</h3>
                 <br></br>
-                {/* <h3 style={{margin: "0 10px"}}  onClick={()=>navigator.push("/todo")}>Todo</h3> */}
             </div>
             
 

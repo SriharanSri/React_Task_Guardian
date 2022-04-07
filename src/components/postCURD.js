@@ -31,12 +31,7 @@ function PostCURD({ post }) {
   const handleText = (e) => {
     settextinput(e.target.value);
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const data = { title: titleRef.current.value, body: bodyRef.current.value };
-  //   dispatch(AddPost(data));
-  //   setModalVisible(false);
-  // };
+
   return (
     <div key={post.id} className="card">
       <u className="newpost">{post.title}</u>
@@ -49,13 +44,6 @@ function PostCURD({ post }) {
           onChange={(e) => handleText(e)}
           hidden={visibile}
         />
-        {/* <button
-          onClick={() => handleSubmit()}
-          className="btn btn-primary"
-          hidden={visibile}
-        >
-          Update
-        </button> */}
         <button onClick={() => handleEdit()} className="btn btn-primary">
           Edit
         </button>
@@ -79,9 +67,16 @@ function PostCURD({ post }) {
           okText="Update"
         >
           <div className="feildview">
-            {/* <input value={textinput} onChange={(e) => handleText(e)} /> */}
-            <input placeholder="Update Title" className="input" ref={titleRef} />
-            <input placeholder="Update Content" className="input" ref={bodyRef} />
+            <input
+              placeholder="Update Title"
+              className="input"
+              ref={titleRef}
+            />
+            <input
+              placeholder="Update Content"
+              className="input"
+              ref={bodyRef}
+            />
           </div>
         </Modal>
       </form>
