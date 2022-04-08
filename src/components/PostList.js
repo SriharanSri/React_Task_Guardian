@@ -27,7 +27,7 @@ function PostList() {
   const postData = useSelector((state) => state.userdata).userdata;
   const todoData = useSelector((state) => state.usertodo).usertodo;
 
-  console.log("todo", todoData);
+  // console.log("postData", postData);
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { title: titleRef.current.value, body: bodyRef.current.value };

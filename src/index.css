@@ -178,7 +178,7 @@ body {
   padding: 10px;
   border-radius: 15px;
   border-width: 3px;
-  border-color: turquoise;
+  border-color: lightgrey;
 }
 .btn__primary {
   color: #fff;
@@ -363,7 +363,7 @@ body {
 }
 .search{
   width: 500px;
-  color: lightseagreen;
+  color: rgb(35, 186, 178);
   background-color: #d95353;
   border-radius: 30px;
   border-width: 2px;

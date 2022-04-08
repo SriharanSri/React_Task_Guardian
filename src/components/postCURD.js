@@ -1,4 +1,5 @@
 import {
+  CommentOutlined,
   DeleteOutlined,
   DeleteTwoTone,
   EditFilled,
@@ -7,15 +8,24 @@ import {
 } from "@ant-design/icons";
 import { Modal, Popconfirm } from "antd";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { PostUpdate, PostDelete } from "../sagas/Thunk/SeriviceThunk";
+import { useDispatch, useSelector } from "react-redux";
+import { PostUpdate, PostDelete, fetchComment, fetchUserComment } from "../sagas/Thunk/SeriviceThunk";
 function PostCURD({ post }) {
+
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(fetchUserComment(post.id));
+  }, []);
+  const usercomments = useSelector((state) => state.usercomments).usercomments;
+    console.log("usercomments", usercomments);
+
+
   const [visibile, setVisibile] = React.useState(true);
   const [textinput, settextinput] = React.useState(post.title);
   const [ModalVisible, setModalVisible] = React.useState(false);
   const titleRef = React.useRef(null);
   const bodyRef = React.useRef(null);
-  const dispatch = useDispatch();
   const handleEdit = () => {
     setModalVisible(visibile);
   };
@@ -64,12 +74,17 @@ function PostCURD({ post }) {
         <h5 className="card-title">{"Title :    " + post.title}</h5>
         <p className="card-text">{"Post :   " + post.body}</p>
 
-        <input
-          value={textinput}
-          onChange={(e) => handleText(e)}
-          hidden={visibile}
-        />
+      
       </div>
+     {/* <div  style={{ flexDirection: "row", display: "flex",alignItems:'center' }}>
+     <CommentOutlined  color="d95353" style={{ fontSize: 22, marginRight: 8,color:'#53a3d9' }}/>
+     <p  style={{color:'#53a3d9'}} className="card-text">{ 'Comments'}</p>
+
+    
+     </div>
+     {usercomments.map((comment) => (
+            <p key={comment.id} >{comment.body}</p>
+          ))} */}
       <form onSubmit={(e) => EditPost(e)}>
         <Modal
           okType="submit"

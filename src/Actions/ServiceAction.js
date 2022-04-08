@@ -2,6 +2,7 @@ import {
     FETCH_USER_DETAILS_START,
     FETCH_USER_DETAILS_SUCCESS,
     FETCH_USER_DETAILS_FAILURE,
+    FETCH_USER_COMMENT_SUCCESS
 } from "./ActionConstant";
 
 
@@ -29,6 +30,12 @@ export function fetchUserDetailsStart(data) {
     return {
       type: FETCH_USER_DETAILS_FAILURE,
       error,
+    };
+  }
+  export function fetchUserComment(data) {
+    return {
+      type: FETCH_USER_COMMENT_SUCCESS,
+      data,
     };
   }
   
