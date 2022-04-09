@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPost, fetchUserData ,fetchUserPost} from "../sagas/Thunk/SeriviceThunk";
+import { fetchPost, fetchUserData, fetchUserTodo ,} from "../sagas/Thunk/SeriviceThunk";
 
 function Discard() {
   const dispatch = useDispatch();
@@ -9,25 +9,18 @@ function Discard() {
   const [usercomment, setUsercomment] = useState();
 
   React.useEffect(() => {
-    getdata();
-    getCommentdata();
+    // getdata();
+    // getCommentdata();
     dispatch(fetchUserData())
-    dispatch(fetchPost())
-  
+    dispatch(fetchUserTodo());
+    
   }, []);
-  const userData = useSelector(state=>state.userData)
-   const userPostdetails = useSelector(state=>state.post)
-
+   const postData = useSelector((state) => state.userdata).userdata;
+   const todoData = useSelector((state) => state.usertodo).usertodo;
+    console.log("postData", todoData.length);
+   
   const getdata = () => {
-    axios
-      .get("https://gorest.co.in/public/v2/posts")
-
-      .then((res) => {
-        setUserPost(res.data.length);
-      })
-      .catch((err) => {
-        console.log("error", err.message);
-      });
+    // setUserPost(postData.length);
   };
   const getCommentdata = () => {
     axios
@@ -48,7 +41,7 @@ function Discard() {
       
       <div className="listgroup">
         <p className="post">Total number of Posts</p>
-        <ul className="textcount">{userPost ? userPost : "Getting Data"}</ul>
+        <ul className="textcount">{postData ? postData.length : "Getting Data"}</ul>
       </div>
       <div className="listgroup">
         <p className="post">Total number of Comment</p>
@@ -56,7 +49,7 @@ function Discard() {
       </div>
       <div className="listgroup">
         <p className="post">Total number of Todos</p>
-        <ul className="textcount">{userPost ? userPost : "Getting Data"}</ul>
+        <ul className="textcount">{todoData ? todoData.length : "Getting Data"}</ul>
       </div>
 
       
