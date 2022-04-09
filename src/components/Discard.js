@@ -10,7 +10,7 @@ function Discard() {
 
   React.useEffect(() => {
     // getdata();
-    // getCommentdata();
+    getCommentdata();
     dispatch(fetchUserData())
     dispatch(fetchUserTodo());
     
