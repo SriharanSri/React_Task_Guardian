@@ -10,7 +10,7 @@ import PostCURD from "./postCURD";
 import { Tabs, } from "antd";
 import { Modal, Button,Radio } from "antd";
 import "antd/dist/antd.css";
-import TodoCURD from "./TodoCURD";
+import TodoCURD from "./TodoCurdOp";
 
 const { TabPane } = Tabs;
 function PostList() {
