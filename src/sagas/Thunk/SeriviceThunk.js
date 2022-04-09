@@ -2,13 +2,13 @@ import axios from "axios";
 import { FETCH_USER_COMMENT_SUCCESS, FETCH_USER_DETAILS_SUCCESS ,FETCH_USER_POST_SUCCESS, FETCH_USER_TODO_SUCCESS} from "../../Actions/ActionConstant";
 import { ToastContainer, toast } from 'react-toastify';
 
-const postAPI = "users/3471/posts";
-const todoAPI = "users/3471/todos";
+const postAPI = "users/2896/posts";
+const todoAPI = "users/2896/todos";
 const updatePost = 'posts/'
 const updateTodo = 'todos/'
 const deletePost = 'posts/'
 const user ='users/'
-const getTodo = 'users/3471/todos'
+const getTodo = 'users/2896/todos'
 const getCmt = 'posts/2192/comments'
 const API = axios.create({
     baseURL: 'https://gorest.co.in/public/v2/',
