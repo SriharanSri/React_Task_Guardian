@@ -38,10 +38,10 @@ function MainFile() {
 
   return (
     <div className="headercontainer">
-      <p  >Search Page</p>
+      <p  >Search All User Posts</p>
       
       <Select className="search"  options={ searchPost? searchPost : null}   onChange={value => setValue(value)} />
-      <p className="result">Search Results</p>
+      <p className="result">  {value &&  value.label ? ' Search Results' : null}   </p>
       <p className="searchresult" >{value &&  value ? value.label : null}</p>
     </div>
   );
